@@ -40,7 +40,7 @@ btn.addEventListener('click', function(e) {
     let ind = 0;
     let opp = "";
    let res = 0
-   
+  let ans = 0;
    
     currentNumber += e.target.textContent;
     output.textContent = currentNumber;
@@ -57,25 +57,26 @@ btn.addEventListener('click', function(e) {
              
                 
                } 
-
+               
                else if(currentNumber[i] === "="){
                    
                 num2 = currentNumber.slice(ind, currentNumber.length -1) //gstarting index is the currectnumber up t the oprator and we add +1 so it skips it and we get het nmber nad not *88 instead we get 88
                     num2 = Number(num2);
                     res  = operate(num1, opp, num2); 
                     output.textContent = res;
-                    
+                    currentNumber = res;
+                    num1 = res;
+                    opp = ""
+                    num2 = 0;  
+                   
             } 
-
        }
     
     }
 });
 
 
-btnc.addEventListener('click', function() {
-    
-   
+btnc.addEventListener('click', function() {   
    num1 = 0;
    num2 = 0;
    opp = "";

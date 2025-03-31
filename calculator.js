@@ -3,6 +3,7 @@ const soutput = document.getElementById('stext');
 const btn = document.getElementById('num');
 const btnc = document.getElementById('c');
 const btnb = document.getElementById('b');
+const dc = document.getElementById('dot').disabled = false;
 
 let currentNumber = ""; 
 let optr = ["+","-","/","*","%"];  
@@ -10,7 +11,7 @@ let optr = ["+","-","/","*","%"];
 btn.addEventListener('click', function(e) {
     let res = 0;
     let err = "Error";
-
+    let dotc = 0;
     currentNumber += e.target.textContent;
 
     // Clicking white space does not trigger an error
@@ -24,15 +25,19 @@ btn.addEventListener('click', function(e) {
             
             // Does a character from optr appear in currentNumber?
             if (i === j) {
-                const lastChar = currentNumber[currentNumber.length - 1];
 
+                const lastChar = currentNumber[currentNumber.length - 1];
+                document.getElementById('dot').disabled = false;
+                
                 // Only evaluate if last character is NOT an operator
                 if (!optr.includes(lastChar)) {
                     try {
+                       
                         res = eval(currentNumber);
                         soutput.textContent = currentNumber;  
                         output.textContent = res;
                     } catch (e) {
+                       
                         output.textContent = err;
                         console.error("Eval failed:", e);
                     }
@@ -49,6 +54,14 @@ btn.addEventListener('click', function(e) {
                 currentNumber = currentNumber.slice(0, -1);
                 output.textContent = currentNumber;
             }  
+            
+            //Disables dot button if > 1
+            else if(i === "."){
+                dotc++
+                if(dotc > 1){
+                    document.getElementById('dot').disabled = true;
+                }
+            }
         }  
     }
 
@@ -64,6 +77,7 @@ btnc.addEventListener('click', function() {
     res = 0;
     currentNumber = "";
     output.textContent = 0;
+    document.getElementById('dot').disabled = false;
 });
 
 //Backspace button
@@ -81,8 +95,6 @@ btnb.addEventListener('click', function() {
 //old way i was doin it
 
 /*
-
-
 
 
    for(let i = 0; i < currentNumber.length; i++){
@@ -115,27 +127,5 @@ btnb.addEventListener('click', function() {
     }
 
 
-
-
-
-
-
-
-
-
- else if(currentNumber[i] === "="){
-                   
-                num2 = currentNumber.slice(ind, currentNumber.length -1) //gstarting index is the currectnumber up t the oprator and we add +1 so it skips it and we get het nmber nad not *88 instead we get 88
-                    num2 = Number(num2); // convert to int
-                    res  = operate(num1, opp, num2); 
-                    output.textContent =   res;
-                    currentNumber = res ;
-                    num1 = res;
-                    opp = "";
-                    num2 = 0;  
-                                  
-            }  else if(res.toString().length > 4){
-                output.textContent =   res.toFixed(3);
-            } 
 
             */

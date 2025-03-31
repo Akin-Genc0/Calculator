@@ -1,0 +1,29 @@
+.ct{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+   
+}
+
+
+.con{
+    
+   width: 10%;
+
+}
+
+button{
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.out{
+    display: flex;
+    text-align: right;
+    flex-direction: column;
+    background-color: rgb(238, 255, 245);
+    
+}
+
+
+

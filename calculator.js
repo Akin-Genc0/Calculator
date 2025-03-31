@@ -24,11 +24,19 @@ btn.addEventListener('click', function(e) {
             
             // Does a character from optr appear in currentNumber?
             if (i === j) {
-                currentNumber.split(j); // Splits currentNumber on the position of j
-                res = eval(currentNumber); 
-                soutput.textContent = currentNumber;  
-                output.textContent = res;  
+                const lastChar = currentNumber[currentNumber.length - 1];
 
+                // Only evaluate if last character is NOT an operator
+                if (!optr.includes(lastChar)) {
+                    try {
+                        res = eval(currentNumber);
+                        soutput.textContent = currentNumber;  
+                        output.textContent = res;
+                    } catch (e) {
+                        output.textContent = err;
+                        console.error("Eval failed:", e);
+                    }
+                }
             } 
             // If result length is greater than 8 characters, round it
             else if (res.toString().length > 8) {

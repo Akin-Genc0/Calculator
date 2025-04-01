@@ -12,7 +12,7 @@ A simple calculator built as part of [The Odin Project](https://www.theodinproje
 
 ## Live Demo
 
-[View on GitHub Pages](https://yourusername.github.io/calculator)
+[View on GitHub Pages](akin-genc0.github.io/Calculator/)
 
 ## Built With
 

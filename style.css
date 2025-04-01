@@ -76,4 +76,7 @@
     background-color: #e04343;
   }
 
-
+.bt{
+    display: flex;
+    flex-direction: row;
+}
